@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/***** Analysis */
+.analysis_box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: url("../img/banner/images.jpg");
+}
+
+.analysis_box .analysis_item {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.analysis_box .analysis_item img {
+  width: 80px;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+  /* border: 4px double black; */
+  /* border-radius: 50%; */
+  transform: scale(0.8);
+}
+
+.analysis_box .analysis_item .analysis_count {
+  margin-top: 5px;
+  font-variant: small-caps;
+  font-size: larger;
+}
+
+span[data-count] {
+  display: block;
+}
+
+.analysis_box .analysis_item .analysis_term {
+  font-variant: small-caps;
+  font-weight: bolder;
+  letter-spacing: 1.3px;
+  font-size: 24px !important;
+}
+
+@media screen and (max-width: 500px) {
+  .analysis_box .analysis_item {
+    width: 50%;
+  }
+}

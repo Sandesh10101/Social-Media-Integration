@@ -1,0 +1,144 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap");
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+/***** Scrollbar Styling */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/***** Section Heading */
+.section_heading {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: darkslategray;
+  text-align: center;
+  margin: 10px auto;
+  padding-top: 20px;
+}
+
+.section_heading span:nth-child(2) {
+  display: block;
+  margin: 6px auto;
+  width: 70px;
+  height: 4px;
+  border-radius: 10px;
+  background: rgba(102, 51, 153, 0.637);
+}
+
+/***** FAQ */
+#faq_box .accordion-header {
+  background: rgba(211, 211, 211, 0.233);
+  letter-spacing: 0.8px !important;
+}
+
+#faq_box .accordion-body {
+  padding-left: 30px !important;
+  color: rgb(109, 109, 109) !important;
+}
+
+@media screen and (min-width: 768px) {
+  #faq_box .accordion-body {
+    padding-left: 40px !important;
+  }
+}
+
+/***** Footer */
+footer {
+  background: rgb(102, 101, 101);
+  color: lightgrey;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer span {
+  font-style: italic;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+}
+
+/***** Social Media Custom Button HTML & CSS Styling  */
+.greeting_fbuser {
+  font-family: "Akaya Telivigala", cursive;
+  color: lightcyan;
+}
+
+.media_btn {
+  width: 220px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 2px;
+  margin: 5px 0;
+  opacity: 1;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.media_btn:hover {
+  color: white;
+  opacity: 0.85;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+  background-color: #0281f8e0;
+  color: white !important;
+  font-weight: 500;
+}
+
+.fb .fa-facebook {
+  font-size: 17px;
+  color: white !important;
+  vertical-align: -1.5px;
+}
+
+.twitter {
+  background-color: #55acee;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
