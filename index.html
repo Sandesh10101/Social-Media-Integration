@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- || meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id"
+        content="206850706612-n6h6719m383f79pjaso9ar1sk3sqpmeu.apps.googleusercontent.com">
+
+    <!-- || title tag & tab icon -->
+    <title>Social_Media_Integration</title>
+    <link rel="icon" type="image/png" href="img/brandLogo.jpg" />
+
+    <!-- || Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- || AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+    <!-- || Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/banner.css" />
+    <link rel="stylesheet" href="./css/analysis.css" />
+    <link rel="stylesheet" href="./css/assurance.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/user.css" />
+</head>
+
+<body>
+
+    <!-- || Navbar Section Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html" data-aos="fade-up" data-delay="50">
+                <img src="./img/images.png" alt="logo" />
+                <span>Connections</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-4" data-aos="fade-up" data-delay="50">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#analysis">Active_Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#user_info_box">
+                            <img src="./img/icon/user.svg" class="profile_icon" id="home_profile_icon"
+                                alt="Profile Icon" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- || Navbar Section End -->
+
+
+    <!-- || Banner & Payment Section Start -->
+    <main>
+        <div class="banner_box">
+            <img src="./img/banner/banner1.jpg" id="banner_image" alt="Banner Image" />
+            <div class="overlay">
+                <div data-aos="fade-up">
+                    <div class="row">
+                        <h5 class="banner_heading">You can be connected <br /> Here</h5>
+                        <form class="mt-3" id="signin_user" style="display: block;">
+
+                            <div class="g-signin2 d-flex justify-content-center mb-2" data-onsuccess="onSignIn"
+                                data-theme="dark" data-width="220" data-longtitle="true"></div>
+                            <!-- <div class="fb-login-button" data-width="" data-size="large"
+                                data-button-type="continue_with" data-layout="default" data-auto-logout-link="false"
+                                data-use-continue-as="false"></div> -->
+
+                            <button type="button" class="fb media_btn" onclick="loginWithFacebook();">
+                                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                            </button>
+                        </form>
+
+                        <form class="mt-3" id="logout_fb" style="display: none;">
+                            <h3 class="greeting_fbuser">Welcome, <span id="fb_userName"></span></h3>
+                            <button type="button" class="fb media_btn" onclick="logoutFromFacebook();">
+                                <i class="fa fa-facebook fa-fw"></i> Logout From Facebook
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-4" id="user_info_box">
+            <div class="row px-1" id="user_info" style="display: block;">
+                <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1 col-12 bg-light py-lg-5 py-4" data-aos="fade-up">
+                    <div class="row">
+                        <img src="./img/icon/profile.png" class="user_profile_img" id="user_img" alt="Profile" />
+                        <h3 class="user_profile_name">Welcome, <span id="user_name">User</span></h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <table class="table text-center table-bordered table-striped mt-4 text-dark">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Profile Id</th>
+                                        <td id="userId">NA</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td id="userName">NA</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td id="userMailId">NA</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <a href="#" class="btn px-3 signout_btn" onclick="signOut();">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- || Banner & Payment Section End -->
+
+
+
+
+    <!-- || Analysis Section Start -->
+    <section id="analysis">
+        <div class="">
+            <h2 class="section_heading pb-3" data-aos="fade-up">
+                <span>Our 2021 Analysis</span>
+                <span></span>
+            </h2>
+
+            <div class="analysis_box mt-4 pt-3 pb-4" data-aos="fade-up">
+                <div class="analysis_item" data-aos="fade-up" data-delay="150">
+                    <h5 class="analysis_term">Facebook</h5>
+                    <img src="./img/icon/facebook.svg" alt="Facebook" />
+                    <h3 class="analysis_count"><span data-count="2910">0</span> Million</h3>
+                </div>
+                <div class="analysis_item" data-aos="fade-up">
+                    <h5 class="analysis_term">Youtube</h5>
+                    <img src="./img/icon/youtube.svg" alt="Youtube" />
+                    <h3 class="analysis_count"><span data-count="1860">0</span> Million</h3>
+                </div>
+                <div class="analysis_item" data-aos="fade-up" data-delay="250">
+                    <h5 class="analysis_term">Whatsapp</h5>
+                    <img src="./img/icon/whatsapp.svg" alt="Whatsapp" />
+                    <h3 class="analysis_count"><span data-count="2000">0</span> Million</h3>
+                </div>
+                <div class="analysis_item" data-aos="fade-up">
+                    <h5 class="analysis_term">Instagram</h5>
+                    <img src="./img/icon/instagram.svg" alt="Instagram" />
+                    <h3 class="analysis_count"><span data-count="1074">0</span> Million</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- || Analysis Section End -->
+
+
+
+
+    <!-- || Footer Section Start -->
+    <footer class="px-md-5 px-4 pt-1">
+        <p class="pt-2">Copyright&copy; 2022 By <span>Sandesh Choudhary</span></p>
+    </footer>
+    <!-- || Footer Section End -->
+
+
+    <!-- || Inbuilt & Custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" defer></script>
+    <script src="https://use.fontawesome.com/adec49eb3c.js"></script>
+
+    <!-- AOS.js Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Sweetalert.js -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" async></script>
+
+    <!-- UI Interactivity & Analysis Count -->
+    <script src="./js/index.js" async></script>
+    <script src="./js/analysisCount.js" defer></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script> -->
+
+    <!-- Add Firebase products that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script> -->
+
+    <!-- Firebase Login Script -->
+    <!-- <script src="./js/firebase.js" defer></script> -->
+
+    <!-- Google Sign-in -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./js/login.js" defer></script>
+
+    <script>
+        // Google Sign-out Method
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                alert('User signed out.');
+                document.querySelector('#user_info').style.display = "none";
+                document.querySelector('#signin_user').style.display = "block";
+                document.querySelector('#home_profile_icon').src = "./img/icon/profile.png";
+                document.querySelector('#home_profile_icon').alt = "Profile Icon";
+                document.querySelector('#user_img').src = "./img/icon/profile.png";
+                document.querySelector('#user_img').alt = "Profile Icon";
+            });
+        }
+    </script>
+
+    <!-- Load the JS SDK asynchronously -->
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js"></script> -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js"></script>
+    <script src="./js/facebook.js" defer></script>
+    <!-- <script src="./js/facebook.js" defer></script> -->
+    <!-- <div id="fb-root"></div> -->
+    <!-- <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0&appId=270429455173961&autoLogAppEvents=1"
+        nonce="xbGZTzam"></script> -->
+</body>
+
+</html>
